@@ -1,7 +1,9 @@
 body{
-  background-image: url(./assets/Matterhorn.svg);
+  font-family: 'Roboto Condensed', sans-serif;
+  color: white;
+  margin: 20px;
   &:before{
-    background-image: url(./assets/bgc.jpg);
+    background-image: url(./bgc.jpg);
     content: "";
     position: fixed;
     top: 0;
@@ -11,5 +13,6 @@ body{
     background-repeat: no-repeat;
     background-position: 50%;
     background-size: cover;
+    z-index: -1;
   }
 }

@@ -1,0 +1,108 @@
+form {
+  top: 0%;
+  position: relative;
+  max-width: 500px;
+  margin: 0px auto;
+  transition: all 0.8s ease 0.5s;
+  max-width: 600px;
+  input {
+    width: 100%;
+    background-color: rgb(255, 255, 255);
+    font-size: 16px;
+    color: rgb(197, 197, 197);
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 6px -1px, rgba(0, 0, 0, 0.06) 0px 2px 4px -1px;
+    outline: none;
+    border-style: none;
+    padding: 10px 15px 10px 40px;
+    transition: all 0.2s ease 0s;
+    border-radius: 30px;
+    box-sizing: border-box;
+    padding: 15px 20px 15px 45px;
+    &:focus {
+      color: rgb(25, 25, 25);
+      box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px, rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+      outline: none;
+    }
+  }
+  i.fas {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    color: rgba(51, 51, 51, 0.479);
+  }
+  h1 {
+    text-align: center;
+  }
+}
+
+.location {
+  &__info {
+    h3 {
+      font-size: 4rem;
+      margin-bottom: 0;
+      @media screen and (max-width: 768px) {
+        font-size: 2.5rem;
+      }
+    }
+    p {
+      margin-top: 0;
+      font-size: 2rem;
+    }
+  }
+  &__details {
+    display: flex;
+    flex: 1;
+    margin-top: 5%;
+    @media screen and (max-width: 768px) {
+      flex-direction: column;
+    }
+    & .left,
+    & .right {
+      display: flex;
+      flex: 1;
+      justify-content: center;
+      padding: 24px;
+    }
+    & .left {
+      span i {
+        font-size: 9rem;
+        margin-right: 24px;
+        @media screen and (max-width: 768px) {
+          font-size: 5rem;
+        }
+      }
+      .temprature {
+        .title {
+          font-size: 7rem;
+          margin: 0;
+          line-height: 6rem;
+          @media screen and (max-width: 768px) {
+            font-size: 2rem;
+            line-height: 2rem;
+          }
+        }
+        .name {
+          font-size: 1.5rem;
+          @media screen and (max-width: 768px) {
+            font-size: 1rem;
+          }
+        }
+      }
+    }
+    & .right {
+      flex-wrap: wrap;
+      background-color: rgba(0, 0, 0, .2);
+      border-radius: 8px;
+      .item {
+        padding: 12px;
+        display: flex;
+        justify-content: center;
+        flex: 1 1 160px;
+        align-items: center;
+        @media screen and (max-width: 768px) {
+          flex: 1 1 20%;
+        }
+      }
+    }
+  }
+}

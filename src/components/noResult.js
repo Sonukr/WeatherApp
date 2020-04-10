@@ -1,7 +1,7 @@
 import React from "react";
 
-function noResult() {
+export const NoResult =  (props) => {
   return <p>Sorry... No results found.</p>;
 }
 
-export default noResult;
+

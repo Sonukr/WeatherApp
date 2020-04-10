@@ -1,7 +1,7 @@
 {
-  "name": "react",
+  "name": "weatherapp",
   "version": "1.0.0",
-  "description": "React example starter project",
+  "description": "Weather forcasting app",
   "keywords": [
     "react",
     "starter"
