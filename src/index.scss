@@ -1,0 +1,15 @@
+body{
+  background-image: url(./assets/Matterhorn.svg);
+  &:before{
+    background-image: url(./assets/bgc.jpg);
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-repeat: no-repeat;
+    background-position: 50%;
+    background-size: cover;
+  }
+}
