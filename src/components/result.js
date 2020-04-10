@@ -1,4 +1,5 @@
-import React from "react";
+import React, {Fragment} from "react";
+import { Forecast } from './foreCast';
 
 export const Result = (props) => {
   const {
@@ -17,10 +18,18 @@ export const Result = (props) => {
     forecast
   } = props.results;
 
-  // const forecasts = forecast.map(item => (   <ForecastHour     key={item.dt}
-  //  temp={Math.floor(item.main.temp * 1) / 1}     icon={item.weather[0].icon}
-  //  month={item.dt_txt.slice(5, 7)}     day={item.dt_txt.slice(8, 10)}
-  // hour={item.dt_txt.slice(11, 13) * 1}   /> ));
+  const forecasts = forecast.map(item => (
+    <div className="location__forCastItem" >
+      <Forecast
+        key={item.dt}
+        temp={Math.floor(item.main.temp * 1) / 1}
+        icon={item.weather[0].icon}
+        month={item.dt_txt.slice(5, 7)}
+        day={item.dt_txt.slice(8, 10)}
+        hour={item.dt_txt.slice(11, 13) * 1}
+      />
+    </div>
+  ));
 
   const weatherIcon = {
     'Thunderstorm':  (() => <span><i className="fa fa-bolt"></i></span>),
@@ -67,6 +76,19 @@ export const Result = (props) => {
          </div>
         </div>
       </div>
+     
+        <div className="location__forCast">
+          {forecast &&
+            <Fragment>
+              <h3>Forcast</h3>
+              <div className="location__forCastWrapper">
+                {forecasts}
+              </div>
+            </Fragment>
+          }
+        </div>
+      
+      
     </div>
   );
 }
