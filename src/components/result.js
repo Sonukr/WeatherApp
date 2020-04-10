@@ -33,7 +33,7 @@ export const Result = (props) => {
   }
 
   return (
-    <div className="result">
+    <div className="location">
       <div className="location__info">
         <h3>{city}, {country}</h3>
         <p>{date}</p>
@@ -48,7 +48,7 @@ export const Result = (props) => {
         </div>
         <div className="right">
          <div className="item">
-           <p title="Lowest temprature"><i class="fas fa-temperature-low"></i><span>{lowestTemp}&#176;</span></p> 
+           <p title="Lowest temprature"><i className="fas fa-temperature-low"></i><span>{lowestTemp}&#176;</span></p> 
          </div>
          <div className="item">
            <p  title="Sunrise"><i className="fas fa-sun"></i><span>{sunrise.toString().slice(0,4)}</span></p> 
@@ -63,7 +63,7 @@ export const Result = (props) => {
            <p  title="Sunset"><i className="far fa-sun"></i><span>{sunset.toString().slice(0,4)}</span></p> 
          </div>
          <div className="item">
-           <p  title="Wind"><i className="fas fa-wind"></i><span>{wind}mph</span></p> 
+           <p  title="Wind"><i className="fas fa-wind"></i><span>{wind} <small>mph</small> </span></p> 
          </div>
         </div>
       </div>

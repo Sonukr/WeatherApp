@@ -82,8 +82,6 @@ export default class Wether extends React.Component {
           data: null,
         });
       });
-
-      console.log(this.state.data)
   }
 
   render() {

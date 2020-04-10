@@ -34,4 +34,20 @@
         }
       }
     }
+    &__noResult{
+        text-align: center;
+        font-size: 2rem;
+        margin-top: 4rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @media screen and (max-width: 768px) {
+            font-size: 1.5rem;
+            margin-top: 2rem;
+        }
+        i{
+            margin-right: 24px;
+            font-size: 3rem;
+        }
+    }
   }

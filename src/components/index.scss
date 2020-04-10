@@ -36,6 +36,7 @@ form {
 }
 
 .location {
+	text-shadow: 1px 1px 1px rgba(0,0,0,.7);
   &__info {
     h3 {
       font-size: 4rem;
@@ -64,9 +65,13 @@ form {
       padding: 24px;
     }
     & .left {
+			align-items: center;
+			@media screen and (max-width: 768px) {
+					justify-content: space-between;
+			}
       span i {
         font-size: 9rem;
-        margin-right: 24px;
+        margin-right: 3rem;
         @media screen and (max-width: 768px) {
           font-size: 5rem;
         }
@@ -77,8 +82,8 @@ form {
           margin: 0;
           line-height: 6rem;
           @media screen and (max-width: 768px) {
-            font-size: 2rem;
-            line-height: 2rem;
+            font-size: 3rem;
+            line-height: 3rem;
           }
         }
         .name {
@@ -100,17 +105,27 @@ form {
         flex: 1 1 160px;
         align-items: center;
         @media screen and (max-width: 768px) {
-          flex: 1 1 20%;
+          flex: 1 1 25%;
 				}
 				p{
 					text-align: center;
+					flex-direction: column;
+					display:flex;
 					i{
 						font-size: 2rem;
 					}
 					span{
 						margin-top: 8px;
-						display: block;
+						display: inline-flex;
 						font-size: 2rem;
+						flex: 1;
+						align-items: baseline;
+						small{
+							font-size: 0.875rem;		
+							@media screen and (max-width: 768px) {
+								font-size: 0.65rem;		
+							}				
+						}
 					}
 				}
       }
