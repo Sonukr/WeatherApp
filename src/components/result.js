@@ -43,28 +43,27 @@ export const Result = (props) => {
           {weatherIcon[main] ? weatherIcon[main]() : <span><i className="fas fa-smog"></i></span>}
           <div className="temprature">
             <p className="title"> {Math.floor(temp)}&#176;</p>
-            <p className="name"> {main}</p>
+            <p className="name"> {description}</p>
           </div>
         </div>
         <div className="right">
          <div className="item">
-           <span><i class="fas fa-temperature-low"></i></span> {lowestTemp}
+           <p title="Lowest temprature"><i class="fas fa-temperature-low"></i><span>{lowestTemp}&#176;</span></p> 
          </div>
          <div className="item">
-           <span><i class="fas fa-temperature-low"></i></span> {lowestTemp}
+           <p  title="Sunrise"><i className="fas fa-sun"></i><span>{sunrise.toString().slice(0,4)}</span></p> 
          </div>
          <div className="item">
-           <span><i class="fas fa-temperature-low"></i></span> {lowestTemp}
+           <p  title="Chances of rain"><i className="fas fa-cloud-rain"></i><span>{humidity}%</span></p> 
          </div>
          <div className="item">
-           <span><i class="fas fa-temperature-low"></i></span> {lowestTemp}
-
+           <p  title="Highest temprature"><i className="fas fa-temperature-high"></i><span>{highestTemp}&#176;</span></p> 
          </div>
          <div className="item">
-           <span><i class="fas fa-temperature-low"></i></span> {lowestTemp}
+           <p  title="Sunset"><i className="far fa-sun"></i><span>{sunset.toString().slice(0,4)}</span></p> 
          </div>
          <div className="item">
-           <span><i class="fas fa-temperature-low"></i></span> {lowestTemp}
+           <p  title="Wind"><i className="fas fa-wind"></i><span>{wind}mph</span></p> 
          </div>
         </div>
       </div>
