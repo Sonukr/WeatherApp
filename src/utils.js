@@ -13,4 +13,7 @@ const months = [
     'December',
   ];
   const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-  export const getDate = (day, date, month) => `${day && days[day]} ${date} ${months[month]}`;
+  export const getDate = (day, date, month) => {
+      debugger;
+      return `${days[day] || ''} ${date} ${months[month]}`
+  };

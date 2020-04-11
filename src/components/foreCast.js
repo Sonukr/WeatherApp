@@ -8,7 +8,7 @@ export const Forecast = (props) => {
 	return(
 		<Fragment>
 			<p>
-				<span>{getDate('', day, month[1]-1)}</span>
+				<span>{getDate(null, day, month[1]-1)}</span>
 				<span>{hour}:00</span>
 			</p>
 			<div className="forecast__temp">
