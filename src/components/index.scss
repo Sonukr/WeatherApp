@@ -144,12 +144,35 @@ form {
 		&Item{
 			background-color: rgba(0, 0, 0, 0.2);
 			border-radius: 8px;
-			flex-basis: 140px;
+			flex-basis: 190px;
 			flex-shrink: 0;    
 			padding: 10px;
 			margin: 0px 5px;
 			border-radius: 5px;
 			text-align:center;
+			p{
+				display: flex;
+				justify-content: space-between;
+				margin-top: 4px;
+				margin-bottom: 6px;
+				font-size: 1.25rem;
+				 i{
+					 margin-right: 4px;
+				 }
+			}	
+			.forecast__temp{
+				margin: 36px 0 8px;
+				position: relative;
+				p{
+					position:absolute;
+					top: -8px;
+					left: 50%;
+					font-size: 2rem;
+				}
+				img{
+					width: 80px;
+				}
+			}
 		}
 	}
 }

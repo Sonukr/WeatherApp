@@ -19,9 +19,9 @@ export const Result = (props) => {
   } = props.results;
 
   const forecasts = forecast.map(item => (
-    <div className="location__forCastItem" >
+    <div className="location__forCastItem" key={item.dt}>
       <Forecast
-        key={item.dt}
+        item={item}
         temp={Math.floor(item.main.temp * 1) / 1}
         icon={item.weather[0].icon}
         month={item.dt_txt.slice(5, 7)}

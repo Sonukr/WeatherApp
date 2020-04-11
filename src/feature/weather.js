@@ -1,6 +1,14 @@
 import React from "react";
 import {Result, NoResult, Search} from "../components"
 import './index.scss';
+import {getDate} from '../utils.js'
+
+const GeoError = {
+	1: "User denied the request for Geolocation.",
+	2: "Location information is unavailable.",
+	3: "The request to get user location timed out.",
+	4: "An unknown error occurred."
+}
 
 export default class Wether extends React.Component {
   constructor(props) {
@@ -8,8 +16,33 @@ export default class Wether extends React.Component {
     this.state = {
         value: '',
         data: null,
-        error: false
+        error: false,
+        geoError:{},
+        position :{}
     };
+  }
+
+  componentDidMount() {
+    this.init();
+  };
+
+  init(){
+    try {
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition( (positionData) => {
+                this.setState({ position: positionData.coords});
+                this.onSubmit();
+            }, (error) => {
+								console.log(error,error.PERMISSION_DENIED, "dddd");
+								this.setState({error: true, geoError: error});
+            })
+        } else { 
+            this.setState({error: true});
+            console.log('Geolocation is not Available.');
+        }
+    }catch(e){
+
+    }
   }
 
   onChange= (e) => {
@@ -17,11 +50,20 @@ export default class Wether extends React.Component {
   }
 
   onSubmit = (e) => {
-    e.preventDefault();
-    const { value } = this.state;
+    e && e.preventDefault();
+    const { value, position, position:{latitude, longitude }} = this.state;
+    console.log(this.state)
     const APIkey= '82f7c40fef1c306d9053c493f9bd340c';
-    const weather = `https://api.openweathermap.org/data/2.5/weather?q=${value}&APPID=${APIkey}&units=metric`;
-    const forecast = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&APPID=${APIkey}&units=metric`;
+
+    let forecast, weather = '';
+    if(value) {
+        weather = `https://api.openweathermap.org/data/2.5/weather?q=${value}&APPID=${APIkey}&units=metric`;
+        forecast = `https://api.openweathermap.org/data/2.5/forecast?q=${value}&APPID=${APIkey}&units=metric`;    
+    }else if(position){
+        console.log('ddddd')
+        weather = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&APPID=${APIkey}&units=metric`;
+        forecast = `https://api.openweathermap.org/data/2.5/forecast?lat=${latitude}&lon=${longitude}&APPID=${APIkey}&units=metric`;    
+    }
 
     Promise.all([fetch(weather), fetch(forecast)])
       .then(([weatherResp, forCastResp]) => {
@@ -31,25 +73,8 @@ export default class Wether extends React.Component {
         throw Error(weatherResp.statusText, forCastResp.statusText);
       })
       .then(([weatherData, forCastData]) => {
-        const months = [
-          'January',
-          'February',
-          'March',
-          'April',
-          'May',
-          'June',
-          'July',
-          'August',
-          'September',
-          'October',
-          'Nocvember',
-          'December',
-        ];
-        const days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-        const currentDate = new Date();
-        const date = `${days[currentDate.getDay()]} ${currentDate.getDate()} ${
-          months[currentDate.getMonth()]
-        }`;
+				const currentDate = new Date();
+				const date = getDate(currentDate.getDay(),currentDate.getDate(), currentDate.getMonth());
         const sunset = new Date(weatherData.sys.sunset * 1000).toLocaleTimeString().slice(0, 5);
         const sunrise = new Date(weatherData.sys.sunrise * 1000).toLocaleTimeString().slice(0, 5);
 
@@ -76,16 +101,16 @@ export default class Wether extends React.Component {
       })
       .catch(error => {
         console.log(error);
-
         this.setState({
           error: true,
           data: null,
         });
       });
-  }
+	}
+
 
   render() {
-    const { value, data, error } = this.state;
+    const { value, data, error, geoError } = this.state;
     return (
       <div className="weather">
         <div className={data ? 'weather__header': 'weather__header center'}>
@@ -93,7 +118,7 @@ export default class Wether extends React.Component {
             <Search value={value} onChange={this.onChange} onSubmit={this.onSubmit}/>
         </div>
         {data && <Result results={data}/>}
-        {error && <NoResult error={error}/>}
+        {error && <NoResult error={error} message={GeoError[geoError.PERMISSION_DENIED]}/>}
       </div>
     );
   }
