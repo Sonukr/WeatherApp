@@ -3,7 +3,7 @@ import {getDate} from '../utils';
 
 export const Forecast = (props) => {
 	console.log(props)
-	const { temp, month, day, hour, icon, item:{main:{temp_min,temp_max,humidity,feels_like}, wind:{speed}} } = props;
+	const { temp, month, day, hour, icon, item:{main:{temp_max,humidity,feels_like}, wind:{speed}} } = props;
 	const iconUrl = `https://openweathermap.org/img/w/${icon}.png`;
 	return(
 		<Fragment>

@@ -1,5 +1,5 @@
 import React from "react";
-import {Result, NoResult, Search} from "../components"
+import {Result, NoResult, Search} from "components"
 import './index.scss';
 import {getDate} from '../utils.js'
 

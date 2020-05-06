@@ -1,6 +1,6 @@
 import React from "react";
 import "./index.scss";
-import Wether from "./feature/weather";
+import Wether from "feature/weather";
 
 export default function App() {
   return (
